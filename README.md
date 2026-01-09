@@ -2,7 +2,7 @@
 
 
 
-Welcome to \*\*ELECTRO-CORE\*\*
+Welcome to \*\*ROBOCON WORKSPACE\*\*
 
 This document explains \*\*how team members should clone the repo, set up Git, and work using feature branches\*\*.
 
