@@ -59,7 +59,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "GPIO_PROTECTION.kicad_prl",
+    "filename": "GPIO_PROTECTION_RR.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
