@@ -69,7 +69,7 @@ git config --global --list
 
 !!!!IMPORTANT ONE TIME SETTING AFTER INSTALLED GIT:
 
-git clone https://github.com/robocon2026git-code/ELECTRO-CORE.git
+git clone https://github.com/robocon2026git-code/ELECTRICAL-AND-EMBEDDED.git
 
 
 
