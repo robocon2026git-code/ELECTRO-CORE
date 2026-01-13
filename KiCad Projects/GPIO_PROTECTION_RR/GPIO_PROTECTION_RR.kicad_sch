@@ -1408,6 +1408,12 @@
 		(uuid "719301f9-97c4-4428-8673-350ca8fe5e50")
 	)
 	(junction
+		(at 58.42 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "782beccd-24a2-42c3-9b56-7f534ff2069f")
+	)
+	(junction
 		(at 186.69 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1542,6 +1548,16 @@
 			(type default)
 		)
 		(uuid "4d1279dc-2cd3-412e-a426-fad1d094b2b0")
+	)
+	(wire
+		(pts
+			(xy 49.53 33.02) (xy 58.42 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50d179ef-c3b8-4f1e-90a5-f9bd0bcc750f")
 	)
 	(wire
 		(pts
@@ -1963,6 +1979,28 @@
 		)
 		(uuid "fe70a1c2-16d1-4eac-917c-66777fc9be00")
 	)
+	(hierarchical_label "EXT IN{slash}OUT"
+		(shape bidirectional)
+		(at 49.53 33.02 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "45d5ee94-fd71-49d9-9794-999412ea2fef")
+	)
+	(hierarchical_label "ESP32_GPIO"
+		(shape bidirectional)
+		(at 85.09 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a17bc1e7-3fb9-4a25-983e-48dd88bc5701")
+	)
 	(symbol
 		(lib_id "RC0805FR-07330RL:RC0805FR-07330RL")
 		(at 69.85 33.02 0)
@@ -1981,7 +2019,7 @@
 				)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "150"
 			(at 69.85 29.21 0)
 			(effects
 				(font
@@ -2219,7 +2257,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100pf"
+		(property "Value" "100nf"
 			(at 85.09 48.2599 0)
 			(effects
 				(font
