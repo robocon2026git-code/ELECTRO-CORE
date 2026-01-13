@@ -1,0 +1,151 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "PESD3V3L2BT_215" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "D" (id 0) (at -7.62352 10.7979 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Value" "PESD3V3L2BT_215" (id 1) (at -7.62539 -12.5811 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Footprint" "PESD3V3L2BT_215:SOT95P230X110-3N" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MAXIMUM_PACKAGE_HEIGHT" "1.1mm" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "CREATOR" "KARTHIK" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "STANDARD" "IPC-7351B" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "PARTREV" "27 June 2023" (id 7) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "VERIFIER" "" (id 8) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MANUFACTURER" "Nexperia USA" (id 9) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "PESD3V3L2BT_215_0_0"
+      (polyline
+        (pts (xy -1.27 6.35) (xy -3.81 5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.81 5.08) (xy -1.27 3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.175 3.81) (xy -3.81 3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.81 3.81) (xy -3.81 5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 3.81) (xy -1.27 6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.81 5.08) (xy -3.81 6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 3.81 3.81) (xy 6.35 5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 6.35 5.08) (xy 3.81 6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 5.715 6.35) (xy 6.35 6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 6.35 6.35) (xy 6.35 5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 3.81 6.35) (xy 3.81 3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 6.35 5.08) (xy 6.35 3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 -3.81) (xy -3.81 -5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.81 -5.08) (xy -1.27 -6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.175 -6.35) (xy -3.81 -6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.81 -6.35) (xy -3.81 -5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 -6.35) (xy -1.27 -3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.81 -5.08) (xy -3.81 -3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 3.81 -6.35) (xy 6.35 -5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 6.35 -5.08) (xy 3.81 -3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 5.715 -3.81) (xy 6.35 -3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 6.35 -3.81) (xy 6.35 -5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 3.81 -3.81) (xy 3.81 -6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 6.35 -5.08) (xy 6.35 -6.35)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -7.62 5.08) (xy 7.62 5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 7.62 5.08) (xy 7.62 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 7.62 0.0) (xy 7.62 -5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 7.62 -5.08) (xy -7.62 -5.08)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 7.62 0.0) (xy 10.16 0.0)) (stroke (width 0.1524))
+      )
+      (circle (center 7.62 0.0) (radius 0.127)
+        (stroke (width 0.254)) (fill (type none))
+      )
+      (rectangle (start -7.62 -10.16) (end 10.16 10.16)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin passive line (at -12.7 5.08 0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "1"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 15.24 0.0 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "3"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -12.7 -5.08 0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "2"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)
