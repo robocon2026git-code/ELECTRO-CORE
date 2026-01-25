@@ -56,6 +56,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 locomotion.list \
 
+OBJCOPY_HEX += \
+locomotion.hex \
+
 
 # All Target
 all: main-build
@@ -64,8 +67,8 @@ all: main-build
 main-build: locomotion.elf secondary-outputs
 
 # Tool invocations
-locomotion.elf locomotion.map: $(OBJS) $(USER_OBJS) E:\WorkSpace\ELECTRO-CORE\STM32F407_Workspace\locomotion\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "locomotion.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\WorkSpace\ELECTRO-CORE\STM32F407_Workspace\locomotion\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="locomotion.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+locomotion.elf locomotion.map: $(OBJS) $(USER_OBJS) C:\Workspace_praveen\ELECTRICAL-AND-EMBEDDED\STM32F407_Workspace\locomotion\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "locomotion.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Workspace_praveen\ELECTRICAL-AND-EMBEDDED\STM32F407_Workspace\locomotion\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="locomotion.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -79,12 +82,17 @@ locomotion.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+locomotion.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "locomotion.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) default.size.stdout locomotion.elf locomotion.list locomotion.map
+	-$(RM) default.size.stdout locomotion.elf locomotion.hex locomotion.list locomotion.map
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

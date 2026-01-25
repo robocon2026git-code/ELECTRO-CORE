@@ -26,6 +26,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -77,19 +78,19 @@ typedef struct {
 
 
 
-#define m1_dir_pin						12
-#define m2_dir_pin						13
-#define m3_dir_pin						14
-#define m4_dir_pin						15
+#define m1_dir_pin						GPIO_PIN_12
+#define m2_dir_pin						GPIO_PIN_13
+#define m3_dir_pin						GPIO_PIN_14
+#define m4_dir_pin						GPIO_PIN_15
 
-#define m1_pwm_pin						TIM_CHANNEL_1
-#define m2_pwm_pin						TIM_CHANNEL_2
-#define m3_pwm_pin						TIM_CHANNEL_3
-#define m4_pwm_pin						TIM_CHANNEL_4
+#define m1_pwm_pin						TIM_CHANNEL_1	//PC6
+#define m2_pwm_pin						TIM_CHANNEL_2	//PB5
+#define m3_pwm_pin						TIM_CHANNEL_3	//PB0
+#define m4_pwm_pin						TIM_CHANNEL_4	//PB1
 
 #define PNEUMATIC_PORT					GPIOD
-#define PNEUMATIC_PIN_1					GPIO_PIN_12
-#define PNEUMATIC_PIN_2					GPIO_PIN_13
+#define PNEUMATIC_PIN_1					GPIO_PIN_0
+#define PNEUMATIC_PIN_2					GPIO_PIN_1
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -156,7 +157,7 @@ void servo_handler(uint8_t pos);
 
 int lo_4_wheel_handler();
 int lo_4_wheel_calculation(int vx, int vy, int omega);
-void lo_4_wheel_run(uint8_t dir_pin, uint8_t mot_pin, float pwm);
+void lo_4_wheel_run(uint16_t dir_pin, uint8_t mot_pin, float pwm);
 
 void pnuematic_actuation();
 
@@ -181,7 +182,9 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+
+
+
 
   /* USER CODE BEGIN Init */
 
@@ -221,6 +224,16 @@ int main(void)
 	  recieve_uart();
 //	  printf("LX = %.2f | LY = %.2f", LX_usr, LY_usr);
 	  lo_4_wheel_handler();
+//	  rx_pkt.lx = 0;
+//	  rx_pkt.ly = 0;
+//	  rx_pkt.ry = 0;
+//	  rx_pkt.ry = 0;
+//
+//	  LX_usr = 0;
+//	  LY_usr = 0;
+//	  RX_usr = 0;
+//	  RY_usr = 0;
+
 	  pnuematic_actuation();
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
@@ -731,9 +744,9 @@ int lo_4_wheel_handler(){
     if(abs(y) < 20) y = 0;
     if(abs(w) < 20) w = 0;
 
-    int vx = (x * 100) / 127;
-    int vy = (y * 100) / 127;
-    int omega = (w * 100) / 127;
+    int vx = (x * 255) / 127;
+    int vy = (y * 255) / 127;
+    int omega = (w * 255) / 127;
 
     lo_4_wheel_calculation(vx, vy, omega);
 
@@ -746,17 +759,18 @@ int lo_4_wheel_handler(){
 
 
 int lo_4_wheel_calculation(int vx, int vy, int omega){
-	m1_pwm = (-vx+vy+omega);
-	m2_pwm = (-vx-vy-omega);
+	m1_pwm = (vx+vy+omega);
+	m2_pwm = (vx-vy-omega);
 	m3_pwm = (-vx-vy+omega);
 	m4_pwm = (-vx+vy-omega);
 
 	// ---------- NORMALIZATION (CRTT) ----------
-	float maxraw_1 = MAX(abs(m1_pwm), abs(m2_pwm));
-	float maxraw = MAX(maxraw_1, abs(m4_pwm));
+	float maxraw_1 = MAX(fabs(m1_pwm), fabs(m2_pwm));
+	float maxraw_2 = MAX(fabs(m3_pwm), fabs(m4_pwm));
+	float maxraw = MAX(maxraw_1, maxraw_2);
 
-	if(maxraw > 100.0){
-	float scale = 100.0 / maxraw;
+	if(maxraw > 255.0){
+	float scale = 255.0 / maxraw;
 	m1_pwm = (m1_pwm * scale);
 	m2_pwm = (m2_pwm * scale);
 	m3_pwm = (m3_pwm * scale);
@@ -780,7 +794,7 @@ int lo_4_wheel_calculation(int vx, int vy, int omega){
 	return 0;
 }
 
-void lo_4_wheel_run(uint8_t dir_pin, uint8_t mot_pin, float pwm){
+void lo_4_wheel_run(uint16_t dir_pin, uint8_t mot_pin, float pwm){
 	if(pwm > 0){
 		HAL_GPIO_WritePin(GPIOD, dir_pin, SET);
 	}else{
